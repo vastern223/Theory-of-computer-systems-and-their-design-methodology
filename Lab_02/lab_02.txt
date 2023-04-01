@@ -1,0 +1,104 @@
+C:\Users\Kolotyuk>cd C:\Users\Kolotyuk\Desktop
+-----------------------------------------------------------------------------------------------------------------------------
+C:\Users\Kolotyuk\Desktop>python app.py
+Hello, World!
+-----------------------------------------------------------------------------------------------------------------------------
+C:\Users\Kolotyuk\Desktop>docker build -t myapp .
+-----------------------------------------------------------------------------------------------------------------------------
+[+] Building 77.5s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                     0.2s
+ => => transferring dockerfile: 126B                                                                                                                     0.0s
+ => [internal] load .dockerignore                                                                                                                        0.2s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/python:3                                                                                              4.8s
+ => [internal] load build context                                                                                                                        0.1s
+ => => transferring context: 57B                                                                                                                         0.0s
+ => [1/3] FROM docker.io/library/python:3@sha256:5329e75033c4446dc92d702cf8ebbeb63e549d9b83076a776f6753e10817fc3c                                       61.8s
+ => => resolve docker.io/library/python:3@sha256:5329e75033c4446dc92d702cf8ebbeb63e549d9b83076a776f6753e10817fc3c                                        0.0s
+ => => sha256:aa25de88a84b4c966ce581bda763553da7a093a06315adec8830c3d39b832196 2.22kB / 2.22kB                                                           0.0s
+ => => sha256:df3e9d105d6c5f8aa4410ba84b570db5f9fefbf14020b70fb63c8e7c32e51fb0 7.90kB / 7.90kB                                                           0.0s
+ => => sha256:68a71c865a2c34678c6dea55e4b0928f751ee3c0ca91cace6e4e0578c534d6cf 5.17MB / 5.17MB                                                           4.6s
+ => => sha256:5329e75033c4446dc92d702cf8ebbeb63e549d9b83076a776f6753e10817fc3c 2.14kB / 2.14kB                                                           0.0s
+ => => sha256:3e440a7045683e27f8e2fa04000e0e078d8dfac0c971358ae0f8c65c13321c8e 55.05MB / 55.05MB                                                        20.4s
+ => => sha256:670730c27c2eacf07897a6e94fe55423ea50b884d9c28161a283bbbf064d1124 10.88MB / 10.88MB                                                         4.2s
+ => => sha256:5a7a2c95f0f8b221d776ccf35911b68eec2cf9414a44d216205a6f03e381d3d7 54.58MB / 54.58MB                                                        25.0s
+ => => sha256:6d627e120214bb28a729d4b54a0ecba4c4aeaf0295ca2d1f129480145fad2af6 196.81MB / 196.81MB                                                      48.2s
+ => => sha256:f8c6dc6780819f5eb5a6ee84ce72dd613d5e6c406585211a064b6ef641c8a09a 6.29MB / 6.29MB                                                          23.2s
+ => => extracting sha256:3e440a7045683e27f8e2fa04000e0e078d8dfac0c971358ae0f8c65c13321c8e                                                                2.1s
+ => => extracting sha256:68a71c865a2c34678c6dea55e4b0928f751ee3c0ca91cace6e4e0578c534d6cf                                                                0.3s
+ => => extracting sha256:670730c27c2eacf07897a6e94fe55423ea50b884d9c28161a283bbbf064d1124                                                                0.2s
+ => => sha256:48bd2de548fc487bbcf51e8ae99969d4ac77e412c4fcec68bc529bca2ad304b3 20.05MB / 20.05MB                                                        28.2s
+ => => sha256:e69bcee2d3143195eac279932a0692697b7e3905bed8c737f1cc7f237899ea05 244B / 244B                                                              25.3s
+ => => extracting sha256:5a7a2c95f0f8b221d776ccf35911b68eec2cf9414a44d216205a6f03e381d3d7                                                                2.6s
+ => => sha256:284a2f2376093ba00b09f539e56047dc168703a78095640a178b8e0c5450f460 3.08MB / 3.08MB                                                          27.1s
+ => => extracting sha256:6d627e120214bb28a729d4b54a0ecba4c4aeaf0295ca2d1f129480145fad2af6                                                                7.8s
+ => => extracting sha256:f8c6dc6780819f5eb5a6ee84ce72dd613d5e6c406585211a064b6ef641c8a09a                                                                0.3s
+ => => extracting sha256:48bd2de548fc487bbcf51e8ae99969d4ac77e412c4fcec68bc529bca2ad304b3                                                                0.9s
+ => => extracting sha256:e69bcee2d3143195eac279932a0692697b7e3905bed8c737f1cc7f237899ea05                                                                0.0s
+ => => extracting sha256:284a2f2376093ba00b09f539e56047dc168703a78095640a178b8e0c5450f460                                                                0.3s
+ => [2/3] COPY app.py /                                                                                                                                  1.0s
+ => [3/3] RUN pip install flask                                                                                                                          9.2s
+ => exporting to image                                                                                                                                   0.3s
+ => => exporting layers                                                                                                                                  0.2s
+ => => writing image sha256:295e1182c5efcc24ffa76dac78cc7cb5c9d0f75051e3b8eca8516698fd96aa49                                                             0.0s
+ => => naming to docker.io/library/myapp
+ -----------------------------------------------------------------------------------------------------------------------------
+ Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$ docker run myapp
+Hello, World!
+ -----------------------------------------------------------------------------------------------------------------------------
+ $ docker ps -a
+
+CONTAINER ID   IMAGE                        COMMAND           CREATED              STATUS                          PORTS     NAMES
+4be6f6d982bf   myapp                        "python app.py"   About a minute ago   Exited (0) About a minute ago             upbeat_perlman
+0345d9110404   ellerbrock/alpine-bash-git   "/bin/bash"       12 days ago          Exited (0) 12 days ago                    mycont
+ -----------------------------------------------------------------------------------------------------------------------------
+ Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$ docker stop 4be6f6d982bf
+4be6f6d982bf
+ -----------------------------------------------------------------------------------------------------------------------------
+Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$ docker rm 4be6f6d982bf
+4be6f6d982bf
+ -----------------------------------------------------------------------------------------------------------------------------
+C:\Users\Kolotyuk>cd C:\Users\Kolotyuk\Desktop
+
+C:\Users\Kolotyuk\Desktop>
+-----------------------------------------------------------------------------------------------------------------------------
+C:\Users\Kolotyuk\Desktop>docker build -t lab-container .
+[+] Building 2.1s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 126B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.1s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3                                                        1.7s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 27B                                                                                   0.0s
+ => [1/3] FROM docker.io/library/python:3@sha256:5329e75033c4446dc92d702cf8ebbeb63e549d9b83076a776f6753e10817fc3c  0.0s
+ => CACHED [2/3] COPY app.py /                                                                                     0.0s
+ => CACHED [3/3] RUN pip install flask                                                                             0.0s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:295e1182c5efcc24ffa76dac78cc7cb5c9d0f75051e3b8eca8516698fd96aa49                       0.0s
+ => => naming to docker.io/library/lab-container                                                                   0.0s
+
+C:\Users\Kolotyuk\Desktop>
+-----------------------------------------------------------------------------------------------------------------------------
+C:\Users\Kolotyuk>docker run lab-container
+Hello, World!
+-----------------------------------------------------------------------------------------------------------------------------
+Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$ docker ps -a
+CONTAINER ID   IMAGE                        COMMAND           CREATED         STATUS                     PORTS     NAMES
+2cb58b0b7bee   lab-container                "python app.py"   3 minutes ago   Exited (0) 3 minutes ago             vibrant_ishizaka
+0345d9110404   ellerbrock/alpine-bash-git   "/bin/bash"       12 days ago     Exited (0) 12 days ago               mycont
+-----------------------------------------------------------------------------------------------------------------------------
+Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$  docker stop 2cb58b0b7bee
+2cb58b0b7bee
+-----------------------------------------------------------------------------------------------------------------------------
+Kolotyuk@DESKTOP-MJNK2IE MINGW64 ~
+$  docker rm 2cb58b0b7bee
+2cb58b0b7bee
+
+
