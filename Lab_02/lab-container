@@ -1,0 +1,7 @@
+FROM python:3.9-slim-buster
+
+WORKDIR /app
+
+COPY lab_text.txt .
+
+CMD ["cat", "lab_text.txt"]
