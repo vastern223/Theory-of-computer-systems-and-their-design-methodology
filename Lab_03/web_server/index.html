@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Кнопка з текстом та числами</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .text {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      #myButton {
+        font-size: 48px;
+        padding: 10px 20px;
+        background-color: #0077cc;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #myButton:hover {
+        cursor: pointer;
+      }
+
+      #myButton.clicked {
+        background-color: #ff9933;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="text">Кнопка:</p>
+      <button id="myButton">Натисніть мене можливо я щось зроблю!</button>
+    </div>
+
+    <script>
+      const myButton = document.querySelector("#myButton");
+      const body = document.querySelector("body");
+
+      myButton.addEventListener("click", function() {
+        // Виводимо числа від 9 до 0 та текст після натискання кнопки
+        for (let i = 9; i >= 0; i--) {
+          setTimeout(() => {
+            // Оновлюємо текст у центрі кнопки
+            myButton.innerText = i === 0 ? "Бум!!!!" : i;
+          }, (9 - i) * 1000);
+        }
+      });
+    </script>
+  </body>
+</html>
