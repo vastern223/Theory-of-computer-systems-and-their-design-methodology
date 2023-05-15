@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  time_writer:
+    build:
+      context: .
+      dockerfile: Dockerfile_writer
+    volumes:
+      - ./data:/data
+    restart: always
+
+  time_reader:
+    build:
+      context: .
+      dockerfile: Dockerfile_reader
+    volumes:
+      - ./data:/data
+    restart: always
+
+volumes:
+  data:

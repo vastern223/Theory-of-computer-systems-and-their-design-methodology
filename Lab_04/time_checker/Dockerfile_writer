@@ -1,0 +1,8 @@
+# Використовуємо офіційний образ Python 3.9
+FROM python:3.9
+
+# Копіюємо файли проекту в контейнер
+COPY time_writer.py /
+
+# Запускаємо скрипт time_writer.py при запуску контейнера
+CMD ["python", "time_writer.py"]
