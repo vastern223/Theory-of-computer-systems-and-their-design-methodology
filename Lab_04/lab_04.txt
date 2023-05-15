@@ -1,0 +1,233 @@
+C:\Users\Kolotyuk>docker-compose --version
+Docker Compose version v2.15.1
+
+C:\Users\Kolotyuk>cd C:\Users\Kolotyuk\Desktop\mysql
+C:\Users\Kolotyuk\Desktop\mysql>
+
+C:\Users\Kolotyuk\Desktop\mysql>docker-compose up -d
+[+] Running 19/19
+ - phpmyadmin Pulled                                                                                              37.1s
+   - 26c5c85e47da Pull complete                                                                                   13.4s
+   - 39c8021d1258 Pull complete                                                                                   13.5s
+   - dff43c2de684 Pull complete                                                                                   27.9s
+   - 383987c505e8 Pull complete                                                                                   28.0s
+   - 3fd742e8a904 Pull complete                                                                                   29.1s
+   - ccf9807e8362 Pull complete                                                                                   29.8s
+   - 11cc7ce10028 Pull complete                                                                                   31.3s
+   - 57c835f75a27 Pull complete                                                                                   31.5s
+   - 4c8d91ebbe83 Pull complete                                                                                   31.6s
+   - 48c538ea40cd Pull complete                                                                                   32.3s
+   - dcf6e657c420 Pull complete                                                                                   32.4s
+   - 564cd8aea1b3 Pull complete                                                                                   32.6s
+   - be10554faca5 Pull complete                                                                                   32.7s
+   - ec77acefa7d2 Pull complete                                                                                   32.8s
+   - e86124897705 Pull complete                                                                                   33.0s
+   - 62070534b97e Pull complete                                                                                   34.0s
+   - c6acf54eddc3 Pull complete                                                                                   34.1s
+   - 9b275762880a Pull complete                                                                                   34.1s
+[+] Running 3/3
+ - Network mysql_default         Created                                                                           0.1s
+ - Container mysql-phpmyadmin-1  Started                                                                           4.8s
+ - Container mysql-db-1          Started
+ 
+ 
+ C:\Users\Kolotyuk\Desktop\mysql>docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED              STATUS              PORTS                               NAMES
+c996dd4d33b3   mysql        "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3306->3306/tcp, 33060/tcp   mysql-db-1
+6947e1204177   phpmyadmin   "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp                mysql-phpmyadmin-1
+
+C:\Users\Kolotyuk\Desktop\mysql>docker-compose down
+[+] Running 3/3
+ - Container mysql-db-1          Removed                                                                           1.8s
+ - Container mysql-phpmyadmin-1  Removed                                                                           1.7s
+ - Network mysql_default         Removed
+ 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ 
+C:\Users\Kolotyuk\Desktop\mysql>cd C:\Users\Kolotyuk\Desktop\time_checker
+C:\Users\Kolotyuk\Desktop\time_checker>
+
+C:\Users\Kolotyuk\Desktop\time_checker>docker-compose up -d
+[+] Building 2.4s (11/11) FINISHED
+ => [time_checker-time_reader internal] load build definition from Dockerfile_reader                               0.0s
+ => => transferring dockerfile: 39B                                                                                0.0s
+ => [time_checker-time_writer internal] load build definition from Dockerfile_writer                               0.0s
+ => => transferring dockerfile: 39B                                                                                0.0s
+ => [time_checker-time_reader internal] load .dockerignore                                                         0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [time_checker-time_writer internal] load .dockerignore                                                         0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [time_checker-time_reader internal] load metadata for docker.io/library/python:3.9                             1.9s
+ => [time_checker-time_writer internal] load build context                                                         0.1s
+ => => transferring context: 838B                                                                                  0.0s
+ => [time_checker-time_reader 1/2] FROM docker.io/library/python:3.9@sha256:6ea9dafc96d7914c5c1d199f1f0195c4e05cf  0.0s
+ => [time_checker-time_reader internal] load build context                                                         0.1s
+ => => transferring context: 572B                                                                                  0.0s
+ => CACHED [time_checker-time_reader 2/2] COPY time_reader.py /                                                    0.0s
+ => [time_checker-time_writer] exporting to image                                                                  0.1s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:8f5733bb1b6e3bc7172e8566c17a66c6685ec62aff0c256c6ac0563035c92c4b                       0.0s
+ => => naming to docker.io/library/time_checker-time_reader                                                        0.0s
+ => => writing image sha256:6d3224e7c266afac963cdd199dd1cfc292f66a1d96c6a7cfd039eb61d7a22934                       0.0s
+ => => naming to docker.io/library/time_checker-time_writer                                                        0.0s
+ => CACHED [time_checker-time_writer 2/2] COPY time_writer.py /                                                    0.0s
+[+] Running 3/3
+ - Network time_checker_default          Created                                                                   0.1s
+ - Container time_checker-time_writer-1  Started                                                                   1.2s
+ - Container time_checker-time_reader-1  Started
+
+
+
+
+C:\Users\Kolotyuk\Desktop\time_checker>docker-compose logs
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+time_checker-time_reader-1  | File: 2023-05-15 17.12.04.txt, Content: 2023-05-15 17:12:04
+time_checker-time_reader-1  | File: 2023-05-15 17.12.14.txt, Content: 2023-05-15 17:12:14
+time_checker-time_reader-1  | File: 2023-05-15 17.12.24.txt, Content: 2023-05-15 17:12:24
+time_checker-time_reader-1  | File: 2023-05-15 17.12.34.txt, Content: 2023-05-15 17:12:34
+time_checker-time_reader-1  | File: 2023-05-15 17.13.07.txt, Content: 2023-05-15 17:13:07
+time_checker-time_reader-1  | File: 2023-05-15 17.13.17.txt, Content: 2023-05-15 17:13:17
+time_checker-time_reader-1  | File: 2023-05-15 17.13.27.txt, Content: 2023-05-15 17:13:27
+time_checker-time_reader-1  | File: 2023-05-15 17.13.37.txt, Content: 2023-05-15 17:13:37
+time_checker-time_reader-1  | File: 2023-05-15 17.13.47.txt, Content: 2023-05-15 17:13:47
+time_checker-time_reader-1  | File: 2023-05-15 17.13.57.txt, Content: 2023-05-15 17:13:57
+time_checker-time_reader-1  | File: 2023-05-15 17.14.07.txt, Content: 2023-05-15 17:14:07
+time_checker-time_reader-1  | File: 2023-05-15 17.14.17.txt, Content: 2023-05-15 17:14:17
+time_checker-time_reader-1  | File: 2023-05-15 17.14.27.txt, Content: 2023-05-15 17:14:27
+time_checker-time_reader-1  | File: 2023-05-15 17.15.05.txt, Content: 2023-05-15 17:15:05
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+time_checker-time_reader-1  | File: 2023-05-15 17.12.04.txt, Content: 2023-05-15 17:12:04
+time_checker-time_reader-1  | File: 2023-05-15 17.12.14.txt, Content: 2023-05-15 17:12:14
+time_checker-time_reader-1  | File: 2023-05-15 17.12.24.txt, Content: 2023-05-15 17:12:24
+time_checker-time_reader-1  | File: 2023-05-15 17.12.34.txt, Content: 2023-05-15 17:12:34
+time_checker-time_reader-1  | File: 2023-05-15 17.13.07.txt, Content: 2023-05-15 17:13:07
+time_checker-time_reader-1  | File: 2023-05-15 17.13.17.txt, Content: 2023-05-15 17:13:17
+time_checker-time_reader-1  | File: 2023-05-15 17.13.27.txt, Content: 2023-05-15 17:13:27
+time_checker-time_reader-1  | File: 2023-05-15 17.13.37.txt, Content: 2023-05-15 17:13:37
+time_checker-time_reader-1  | File: 2023-05-15 17.13.47.txt, Content: 2023-05-15 17:13:47
+time_checker-time_reader-1  | File: 2023-05-15 17.13.57.txt, Content: 2023-05-15 17:13:57
+time_checker-time_reader-1  | File: 2023-05-15 17.14.07.txt, Content: 2023-05-15 17:14:07
+time_checker-time_reader-1  | File: 2023-05-15 17.14.17.txt, Content: 2023-05-15 17:14:17
+time_checker-time_reader-1  | File: 2023-05-15 17.14.27.txt, Content: 2023-05-15 17:14:27
+time_checker-time_reader-1  | File: 2023-05-15 17.15.05.txt, Content: 2023-05-15 17:15:05
+time_checker-time_reader-1  | File: 2023-05-15 17.15.15.txt, Content: 2023-05-15 17:15:15
+time_checker-time_reader-1  | File: 2023-05-15 17.15.25.txt, Content: 2023-05-15 17:15:25
+time_checker-time_reader-1  | File: 2023-05-15 17.15.35.txt, Content: 2023-05-15 17:15:35
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+time_checker-time_reader-1  | File: 2023-05-15 17.12.04.txt, Content: 2023-05-15 17:12:04
+time_checker-time_reader-1  | File: 2023-05-15 17.12.14.txt, Content: 2023-05-15 17:12:14
+time_checker-time_reader-1  | File: 2023-05-15 17.12.24.txt, Content: 2023-05-15 17:12:24
+time_checker-time_reader-1  | File: 2023-05-15 17.12.34.txt, Content: 2023-05-15 17:12:34
+time_checker-time_reader-1  | File: 2023-05-15 17.13.07.txt, Content: 2023-05-15 17:13:07
+time_checker-time_reader-1  | File: 2023-05-15 17.13.17.txt, Content: 2023-05-15 17:13:17
+time_checker-time_reader-1  | File: 2023-05-15 17.13.27.txt, Content: 2023-05-15 17:13:27
+time_checker-time_reader-1  | File: 2023-05-15 17.13.37.txt, Content: 2023-05-15 17:13:37
+time_checker-time_reader-1  | File: 2023-05-15 17.13.47.txt, Content: 2023-05-15 17:13:47
+time_checker-time_reader-1  | File: 2023-05-15 17.13.57.txt, Content: 2023-05-15 17:13:57
+time_checker-time_reader-1  | File: 2023-05-15 17.14.07.txt, Content: 2023-05-15 17:14:07
+time_checker-time_reader-1  | File: 2023-05-15 17.14.17.txt, Content: 2023-05-15 17:14:17
+time_checker-time_reader-1  | File: 2023-05-15 17.14.27.txt, Content: 2023-05-15 17:14:27
+time_checker-time_reader-1  | File: 2023-05-15 17.15.05.txt, Content: 2023-05-15 17:15:05
+time_checker-time_reader-1  | File: 2023-05-15 17.15.15.txt, Content: 2023-05-15 17:15:15
+time_checker-time_reader-1  | File: 2023-05-15 17.15.25.txt, Content: 2023-05-15 17:15:25
+time_checker-time_reader-1  | File: 2023-05-15 17.15.35.txt, Content: 2023-05-15 17:15:35
+time_checker-time_reader-1  | File: 2023-05-15 17.15.45.txt, Content: 2023-05-15 17:15:45
+time_checker-time_reader-1  | File: 2023-05-15 17.15.55.txt, Content: 2023-05-15 17:15:55
+time_checker-time_reader-1  | File: 2023-05-15 17.16.05.txt, Content: 2023-05-15 17:16:05
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+time_checker-time_reader-1  | File: 2023-05-15 17.12.04.txt, Content: 2023-05-15 17:12:04
+time_checker-time_reader-1  | File: 2023-05-15 17.12.14.txt, Content: 2023-05-15 17:12:14
+time_checker-time_reader-1  | File: 2023-05-15 17.12.24.txt, Content: 2023-05-15 17:12:24
+time_checker-time_reader-1  | File: 2023-05-15 17.12.34.txt, Content: 2023-05-15 17:12:34
+time_checker-time_reader-1  | File: 2023-05-15 17.13.07.txt, Content: 2023-05-15 17:13:07
+time_checker-time_reader-1  | File: 2023-05-15 17.13.17.txt, Content: 2023-05-15 17:13:17
+time_checker-time_reader-1  | File: 2023-05-15 17.13.27.txt, Content: 2023-05-15 17:13:27
+time_checker-time_reader-1  | File: 2023-05-15 17.13.37.txt, Content: 2023-05-15 17:13:37
+time_checker-time_reader-1  | File: 2023-05-15 17.13.47.txt, Content: 2023-05-15 17:13:47
+time_checker-time_reader-1  | File: 2023-05-15 17.13.57.txt, Content: 2023-05-15 17:13:57
+time_checker-time_reader-1  | File: 2023-05-15 17.14.07.txt, Content: 2023-05-15 17:14:07
+time_checker-time_reader-1  | File: 2023-05-15 17.14.17.txt, Content: 2023-05-15 17:14:17
+time_checker-time_reader-1  | File: 2023-05-15 17.14.27.txt, Content: 2023-05-15 17:14:27
+time_checker-time_reader-1  | File: 2023-05-15 17.15.05.txt, Content: 2023-05-15 17:15:05
+time_checker-time_reader-1  | File: 2023-05-15 17.15.15.txt, Content: 2023-05-15 17:15:15
+time_checker-time_reader-1  | File: 2023-05-15 17.15.25.txt, Content: 2023-05-15 17:15:25
+time_checker-time_reader-1  | File: 2023-05-15 17.15.35.txt, Content: 2023-05-15 17:15:35
+time_checker-time_reader-1  | File: 2023-05-15 17.15.45.txt, Content: 2023-05-15 17:15:45
+time_checker-time_reader-1  | File: 2023-05-15 17.15.55.txt, Content: 2023-05-15 17:15:55
+time_checker-time_reader-1  | File: 2023-05-15 17.16.05.txt, Content: 2023-05-15 17:16:05
+time_checker-time_reader-1  | File: 2023-05-15 17.16.15.txt, Content: 2023-05-15 17:16:15
+time_checker-time_reader-1  | File: 2023-05-15 17.16.25.txt, Content: 2023-05-15 17:16:25
+time_checker-time_reader-1  | File: 2023-05-15 17.16.35.txt, Content: 2023-05-15 17:16:35
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+time_checker-time_reader-1  | File: 2023-05-15 17.12.04.txt, Content: 2023-05-15 17:12:04
+time_checker-time_reader-1  | File: 2023-05-15 17.12.14.txt, Content: 2023-05-15 17:12:14
+time_checker-time_reader-1  | File: 2023-05-15 17.12.24.txt, Content: 2023-05-15 17:12:24
+time_checker-time_reader-1  | File: 2023-05-15 17.12.34.txt, Content: 2023-05-15 17:12:34
+time_checker-time_reader-1  | File: 2023-05-15 17.13.07.txt, Content: 2023-05-15 17:13:07
+time_checker-time_reader-1  | File: 2023-05-15 17.13.17.txt, Content: 2023-05-15 17:13:17
+time_checker-time_reader-1  | File: 2023-05-15 17.13.27.txt, Content: 2023-05-15 17:13:27
+time_checker-time_reader-1  | File: 2023-05-15 17.13.37.txt, Content: 2023-05-15 17:13:37
+time_checker-time_reader-1  | File: 2023-05-15 17.13.47.txt, Content: 2023-05-15 17:13:47
+time_checker-time_reader-1  | File: 2023-05-15 17.13.57.txt, Content: 2023-05-15 17:13:57
+time_checker-time_reader-1  | File: 2023-05-15 17.14.07.txt, Content: 2023-05-15 17:14:07
+time_checker-time_reader-1  | File: 2023-05-15 17.14.17.txt, Content: 2023-05-15 17:14:17
+time_checker-time_reader-1  | File: 2023-05-15 17.14.27.txt, Content: 2023-05-15 17:14:27
+time_checker-time_reader-1  | File: 2023-05-15 17.15.05.txt, Content: 2023-05-15 17:15:05
+time_checker-time_reader-1  | File: 2023-05-15 17.15.15.txt, Content: 2023-05-15 17:15:15
+time_checker-time_reader-1  | File: 2023-05-15 17.15.25.txt, Content: 2023-05-15 17:15:25
+time_checker-time_reader-1  | File: 2023-05-15 17.15.35.txt, Content: 2023-05-15 17:15:35
+time_checker-time_reader-1  | File: 2023-05-15 17.15.45.txt, Content: 2023-05-15 17:15:45
+time_checker-time_reader-1  | File: 2023-05-15 17.15.55.txt, Content: 2023-05-15 17:15:55
+time_checker-time_reader-1  | File: 2023-05-15 17.16.05.txt, Content: 2023-05-15 17:16:05
+time_checker-time_reader-1  | File: 2023-05-15 17.16.15.txt, Content: 2023-05-15 17:16:15
+time_checker-time_reader-1  | File: 2023-05-15 17.16.25.txt, Content: 2023-05-15 17:16:25
+time_checker-time_reader-1  | File: 2023-05-15 17.16.35.txt, Content: 2023-05-15 17:16:35
+time_checker-time_reader-1  | File: 2023-05-15 17.16.45.txt, Content: 2023-05-15 17:16:45
+time_checker-time_reader-1  | File: 2023-05-15 17.16.55.txt, Content: 2023-05-15 17:16:55
+time_checker-time_reader-1  | File: 2023-05-15 17.17.05.txt, Content: 2023-05-15 17:17:05
+time_checker-time_reader-1  | File: 2023-05-15 17.08.57.txt, Content: 2023-05-15 17:08:57
+time_checker-time_reader-1  | File: 2023-05-15 17.09.07.txt, Content: 2023-05-15 17:09:07
+time_checker-time_reader-1  | File: 2023-05-15 17.09.17.txt, Content: 2023-05-15 17:09:17
+time_checker-time_reader-1  | File: 2023-05-15 17.09.27.txt, Content: 2023-05-15 17:09:27
+time_checker-time_reader-1  | File: 2023-05-15 17.11.44.txt, Content: 2023-05-15 17:11:44
+time_checker-time_reader-1  | File: 2023-05-15 17.11.54.txt, Content: 2023-05-15 17:11:54
+
+C:\Users\Kolotyuk\Desktop\time_checker>
+
+
+C:\Users\Kolotyuk\Desktop\time_checker>docker-compose down
+[+] Running 3/3
+ - Container time_checker-time_reader-1  Removed                                                                                                        10.7s
+ - Container time_checker-time_writer-1  Removed                                                                                                        10.6s
+ - Network time_checker_default          Removed                                                                                                         0.3s
+
+C:\Users\Kolotyuk\Desktop\time_checker>
+
+
