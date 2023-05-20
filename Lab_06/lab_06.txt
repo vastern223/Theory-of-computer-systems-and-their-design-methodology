@@ -1,0 +1,49 @@
+C:\Users\Kolotyuk>docker pull gcr.io/google-containers/cadvisor:latest
+latest: Pulling from google-containers/cadvisor
+9d48c3bd43c5: Pull complete
+f7d6cbe0ad90: Pull complete
+15f5311b080f: Pull complete
+Digest: sha256:46d4d730ef886aaece9e0a65a912564cab0303cf88718d82b3df84d3add6885c
+Status: Downloaded newer image for gcr.io/google-containers/cadvisor:latest
+gcr.io/google-containers/cadvisor:latest
+
+C:\Users\Kolotyuk>docker run -d --name=cadvisor --privileged=true -p 8080:8080 -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys:ro -v /var/lib/docker/:/var/lib/docker:ro -v /dev/disk/:/dev/disk:ro gcr.io/google-containers/cadvisor:latest
+6656b4598b16bc444cdd9e6882e23d7bed8aabbb36fd3427dc72c8b154b5b620
+
+
+C:\Users\Kolotyuk\Desktop\time_checker>docker-compose up -d
+[+] Building 2.5s (11/11) FINISHED
+ => [time_checker-time_reader internal] load build definition from Dockerfile_reader                               0.1s
+ => => transferring dockerfile: 39B                                                                                0.0s
+ => [time_checker-time_writer internal] load build definition from Dockerfile_writer                               0.1s
+ => => transferring dockerfile: 39B                                                                                0.0s
+ => [time_checker-time_writer internal] load .dockerignore                                                         0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [time_checker-time_reader internal] load .dockerignore                                                         0.1s
+ => => transferring context: 2B                                                                                    0.0s
+ => [time_checker-time_reader internal] load metadata for docker.io/library/python:3.9                             2.0s
+ => [time_checker-time_writer 1/2] FROM docker.io/library/python:3.9@sha256:6ea9dafc96d7914c5c1d199f1f0195c4e05cf  0.0s
+ => [time_checker-time_writer internal] load build context                                                         0.1s
+ => => transferring context: 838B                                                                                  0.0s
+ => [time_checker-time_reader internal] load build context                                                         0.1s
+ => => transferring context: 572B                                                                                  0.0s
+ => CACHED [time_checker-time_writer 2/2] COPY time_writer.py /                                                    0.0s
+ => CACHED [time_checker-time_reader 2/2] COPY time_reader.py /                                                    0.0s
+ => [time_checker-time_writer] exporting to image                                                                  0.1s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:8f5733bb1b6e3bc7172e8566c17a66c6685ec62aff0c256c6ac0563035c92c4b                       0.0s
+ => => naming to docker.io/library/time_checker-time_reader                                                        0.0s
+ => => writing image sha256:6d3224e7c266afac963cdd199dd1cfc292f66a1d96c6a7cfd039eb61d7a22934                       0.0s
+ => => naming to docker.io/library/time_checker-time_writer                                                        0.0s
+[+] Running 3/3
+ - Network time_checker_default          Created                                                                   0.1s
+ - Container time_checker-time_reader-1  Started                                                                   2.9s
+ - Container time_checker-time_writer-1  Started                                                                   2.7s
+
+C:\Users\Kolotyuk\Desktop\Бойко\lab5>docker-compose up -d
+[+] Running 4/4
+ - Container lab5-zookeeper-1  Started                                                                             2.0s
+ - Container lab5-kafka-1      Started                                                                             3.2s
+ - Container lab5-receiver-1   Started                                                                             4.6s
+ - Container lab5-sender-1     Started
+
